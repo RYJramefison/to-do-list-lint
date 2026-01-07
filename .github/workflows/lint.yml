@@ -1,4 +1,4 @@
-name: Checkstyle Analysis
+name: Checkstyle Linter
 
 on:
   push:
@@ -19,9 +19,12 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          java-version: 21
+          distribution: temurin
           cache: 'maven'
 
+      - name: Download Checkstyle
+        run: curl -L -o checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.14.0/checkstyle-10.14.0-all.jar
+
       - name: Run Checkstyle
-        run: mvn -B verify
+        run: java -jar checkstyle.jar -c checkstyle.xml src
