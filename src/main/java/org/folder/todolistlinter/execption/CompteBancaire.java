@@ -1,6 +1,6 @@
 package org.folder.todolistlinter.execption;
 
-// 2. Utiliser l'exception personnalisée
+
 public class CompteBancaire {
     private double solde;
 
